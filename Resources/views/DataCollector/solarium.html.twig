@@ -43,34 +43,11 @@
             <li>
                 <h2>Request {{ loop.index }} (<a href="{{ query.base_uri }}{{ query.request.uri }}">{{ query.base_uri }}</a>)</h2>
                 <div>
-                    <h3>Params</h3>
-                    {#
-                    <code>
-                        {{ query.request.uri }}
-                        <br/>
-                        {{ query.request.rawdata }}
-                    </code>
-                    #}
-                    <table style="width:45%">
-                        <thead>
-                            <tr>
-                                <th scope="col">Key</th>
-                                <th scope="col">Value</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                    {% for key, value in query.request.params %}
-                            <tr>
-                                <td><b>{{ key }}</b></td>
-                                {% if value|keys %}
-                                <td>{{ value|join('<br />')|raw }}</td>
-                                {% else %}
-                                <td>{{ value }}</td>
-                                {% endif %}
-                            </tr>
-                    {% endfor %}
-                        </tbody>
-                    </table>
+                    <h3>Request</h3>
+
+                    <code>{{ dump(query.request.params) }}</code>
+
+                    <p>&nbsp;</p>
 
                     <h3>Response</h3>
                     <code>
